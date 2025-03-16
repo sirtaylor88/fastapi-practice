@@ -31,7 +31,7 @@ def create_comment(
         alias="commentId",
         deprecated=True,
     ),  # metadata
-    comment_id: int = Path(None, gt=5, le=10),
+    comment_id: int = Path(gt=5, le=10),
     content: str = Body(
         ..., min_length=10, max_length=50, regex=r"^[a-z\s]*$"
     ),  # require a string with at least 10 chars
