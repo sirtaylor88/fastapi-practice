@@ -6,7 +6,6 @@
 fastapi-practice
 │   README.md
 │   pyproject.toml
-│   pyproject.toml
 │   poetry.lock
 |
 └───fastapi_practice
