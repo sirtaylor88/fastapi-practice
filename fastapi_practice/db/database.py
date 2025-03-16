@@ -1,6 +1,6 @@
 """Module defining database."""
 
-from typing import Generator
+from typing import Iterator
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -17,7 +17,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
-def get_db() -> Generator[Session]:
+def get_db() -> Iterator[Session]:
     """Get a DB session."""
     db = SessionLocal()
     try:

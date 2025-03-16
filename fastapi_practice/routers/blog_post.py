@@ -4,7 +4,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Body, Path, Query
 
-from fastapi_practice.models import Blog
+from fastapi_practice.schemas import Blog
 
 router = APIRouter(prefix="/blog", tags=["blog"])
 

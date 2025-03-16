@@ -1,4 +1,4 @@
-"""Blog Models."""
+"""Module defining DB schemas."""
 
 from typing import Optional
 

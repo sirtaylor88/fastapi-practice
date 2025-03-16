@@ -45,9 +45,10 @@ ignore = [".venv"]
 
 [tool.pylint."messages control"]
 disable = [
-    "useless-import-alias",
+    "too-few-public-methods",
     "too-many-arguments",
     "too-many-positional-arguments",
+    "useless-import-alias",
 ]
 
 # isort
