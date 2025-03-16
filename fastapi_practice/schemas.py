@@ -6,14 +6,14 @@ from pydantic import BaseModel
 
 
 class Image(BaseModel):
-    """Model for Image."""
+    """Image schema."""
 
     url: str
     alias: str
 
 
 class Blog(BaseModel):
-    """Model for Blog."""
+    """Blog schema."""
 
     title: str
     content: str
@@ -25,7 +25,7 @@ class Blog(BaseModel):
 
 
 class UserBase(BaseModel):
-    """User"""
+    """User schema."""
 
     username: str
     email: str
