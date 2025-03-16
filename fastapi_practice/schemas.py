@@ -22,3 +22,11 @@ class Blog(BaseModel):
     tags: list[str] = []
     metadata: dict[str, str] = {"key1": "val1"}
     image: Optional[Image] = None
+
+
+class UserBase(BaseModel):
+    """User"""
+
+    username: str
+    email: str
+    password: str
