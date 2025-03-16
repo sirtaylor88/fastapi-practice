@@ -44,7 +44,11 @@ ignore = []
 ignore = [".venv"]
 
 [tool.pylint."messages control"]
-disable = ["useless-import-alias"]
+disable = [
+    "useless-import-alias",
+    "too-many-arguments",
+    "too-many-positional-arguments",
+]
 
 # isort
 [tool.isort]
