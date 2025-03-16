@@ -5,11 +5,11 @@ from fastapi.responses import RedirectResponse
 
 from fastapi_practice.db import models
 from fastapi_practice.db.database import engine
-from fastapi_practice.routers import blog_get, blog_post
+from fastapi_practice.routers import blog, user
 
 app = FastAPI()
-app.include_router(blog_get.router)
-app.include_router(blog_post.router)
+app.include_router(blog.router)
+app.include_router(user.router)
 
 
 @app.get("/", include_in_schema=False)
