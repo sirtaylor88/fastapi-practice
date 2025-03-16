@@ -30,3 +30,15 @@ class UserBase(BaseModel):
     username: str
     email: str
     password: str
+
+
+class UserDisplay(BaseModel):
+    """User schema for display."""
+
+    username: str
+    email: str
+
+    class Config:
+        """Configuration."""
+
+        orm_mode = True  # enable auto-conversion from DbUser model.
