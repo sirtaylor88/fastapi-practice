@@ -24,8 +24,56 @@ class Blog(BaseModel):
     image: Optional[Image] = None
 
 
+class ArticleBase(BaseModel):
+    """Base Article schema for validation."""
+
+    title: str
+    content: str
+    published: bool
+    creator_id: int
+
+
+class Article(BaseModel):
+    """Article Schema for display in relationship."""
+
+    title: str
+    content: str
+    published: bool
+
+    class Config:
+        """Configuration."""
+
+        orm_mode = True
+
+
+class User(BaseModel):
+    """User schema for display in a relationship"""
+
+    id: int
+    username: str
+
+    class Config:
+        """Configuration."""
+
+        orm_mode = True
+
+
+class ArticleDisplay(BaseModel):
+    """Article schema for individual display."""
+
+    title: str
+    content: str
+    published: bool
+    user: User
+
+    class Config:
+        """Configuration."""
+
+        orm_mode = True
+
+
 class UserBase(BaseModel):
-    """User schema."""
+    """Base User schema for validation."""
 
     username: str
     email: str
@@ -33,10 +81,11 @@ class UserBase(BaseModel):
 
 
 class UserDisplay(BaseModel):
-    """User schema for display."""
+    """User schema for individual display."""
 
     username: str
     email: str
+    items: list[Article] = []
 
     class Config:
         """Configuration."""
