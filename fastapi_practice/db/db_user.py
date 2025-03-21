@@ -1,4 +1,4 @@
-"""DB actions fro DBUser."""
+"""DB actions for DBUser."""
 
 from sqlalchemy.orm.session import Session
 
