@@ -7,12 +7,12 @@ from fastapi import APIRouter, Body, Path, Query, Response, status
 from constants import BlogType
 from fastapi_practice.schemas import Blog
 
-router = APIRouter(prefix="/blog", tags=["blog"])
+router = APIRouter(prefix="/blogs", tags=["blog"])
 
 
 # GET
 @router.get(
-    "/all",
+    "/",
     summary="Retrieve all blogs",
     description="Fetching all blogs.",
     response_description="The lsit of available blogs.",
