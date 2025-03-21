@@ -1,5 +1,6 @@
 """DB actions for DBUser."""
 
+from fastapi import HTTPException, status
 from sqlalchemy.orm.session import Session
 
 from fastapi_practice.db.hash import HashService
@@ -28,12 +29,23 @@ def get_users(db: Session) -> list[DbUser]:
 
 def get_user(db: Session, user_id: int) -> DbUser:
     """Get an user by ID."""
+    user = db.query(DbUser).filter(DbUser.id == user_id).first()
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with id {user_id} not found.",
+        )
     return db.query(DbUser).filter(DbUser.id == user_id).first()
 
 
 def update_user(db: Session, user_id: int, request: UserBase) -> str:
     """Update an user."""
     user = db.query(DbUser).filter(DbUser.id == user_id)
+    if not user.first():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with id {user_id} not found.",
+        )
     user.update(
         {
             DbUser.username: request.username,
@@ -48,6 +60,11 @@ def update_user(db: Session, user_id: int, request: UserBase) -> str:
 def delete_user(db: Session, user_id: int) -> str:
     """Delete an user."""
     user = db.query(DbUser).filter(DbUser.id == user_id)
+    if not user.first():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with id {user_id} not found.",
+        )
     user.delete()
     db.commit()
     return "OK"
